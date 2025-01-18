@@ -1,20 +1,11 @@
-/* In the index.js file in the 02-write-file directory,
-develop a script that outputs a greeting to the console,
-waits for text input, and writes the entered text to a file. */
-
 const fs = require("fs");
 const path = require("path");
 const { stdin, stdout, exit } = process;
 
-fs.writeFile(
-  path.join(__dirname, "text.txt"),
-  '',
-  (err) => {
-    if (err) throw err;
-  }
-)
+const output = fs.createWriteStream(path.join(__dirname, "text.txt"));
 
 stdout.write("Hello! Enter any text:\n");
+
 stdin.on("data", (data) => {
   if (data.toString().trim() === "exit") {
     stdout.write("Goodbye :(");

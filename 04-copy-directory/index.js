@@ -4,11 +4,12 @@ const path = require("path");
 const pathFiles = path.join(__dirname, "files");
 const pathFilesCopy = path.join(__dirname, "files-copy");
 
-function copyDir() {
+copyDir(pathFiles, pathFilesCopy);
+
+function copyDir(pathFiles, pathFilesCopy) {
 
   fs.mkdir(pathFilesCopy, { recursive: true }, (err) => {
     if (err) throw err;
-    console.log("Folder was created");
   })
 
   fs.readdir((pathFiles), (err, files) => {
@@ -36,5 +37,3 @@ function copyDir() {
   })
 
 }
-
-copyDir();
